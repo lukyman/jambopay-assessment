@@ -1,0 +1,144 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Users Grouped by Age
+    </ion-title>
+  </ion-navbar>
+  <ion-item>
+  <span>Total Age (No duplicate): {{totalAges}}</span>
+  </ion-item>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header color="secondary">
+      <b> Young </b>
+    </ion-list-header>
+    <div *ngFor="let user of users">
+      <ion-card *ngIf="user.agegroup=='Young'">
+        <ion-item>
+          <ion-row>
+            <ion-col>
+              <p>First Name</p>
+            </ion-col>
+            <ion-col>
+              <p>Last Name</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <h2>{{user.fullname | splitFullname:'firstname'}}</h2>
+            </ion-col>
+            <ion-col>
+              <h4>{{user.fullname | splitFullname:'lastname'}} </h4>
+            </ion-col>
+          </ion-row>
+          <button ion-button clear item-end (click)="gotoDetail(user)">View</button>
+        </ion-item>
+        <ion-card-content>
+          <p>Gender: {{user.gender}}</p>
+          <ion-badge color="secondary">Age: {{user.age}}</ion-badge>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header color="dark">
+      Youth
+    </ion-list-header>
+    <div *ngFor="let user of users">
+      <ion-card *ngIf="user.agegroup=='Youth'">
+        <ion-item>
+          <ion-row>
+            <ion-col>
+              <p>First Name</p>
+            </ion-col>
+            <ion-col>
+              <p>Last Name</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <h2>{{user.fullname | splitFullname:'firstname'}}</h2>
+            </ion-col>
+            <ion-col>
+              <h4>{{user.fullname | splitFullname:'lastname'}} </h4>
+            </ion-col>
+          </ion-row>
+          <button ion-button clear item-end (click)="gotoDetail(user)">View</button>
+        </ion-item>
+        <ion-card-content>
+          <p>Gender: {{user.gender}}</p>
+          <ion-badge color="dark">Age: {{user.age}}</ion-badge>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </ion-list>
+  <ion-list>
+    <ion-list-header color="light">
+      Old
+    </ion-list-header>
+    <div *ngFor="let user of users">
+      <ion-card *ngIf="user.agegroup=='Old'">
+        <ion-item>
+          <ion-row>
+            <ion-col>
+              <p>First Name</p>
+            </ion-col>
+            <ion-col>
+              <p>Last Name</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <h2>{{user.fullname | splitFullname:'firstname'}}</h2>
+            </ion-col>
+            <ion-col>
+              <h4>{{user.fullname | splitFullname:'lastname'}} </h4>
+            </ion-col>
+          </ion-row>
+          <button ion-button clear item-end (click)="gotoDetail(user)">View</button>
+        </ion-item>
+        <ion-card-content>
+          <p>Gender: {{user.gender}}</p>
+          <ion-badge color="light">Age: {{user.age}}</ion-badge>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header color="danger">
+      Duplicates
+    </ion-list-header>
+    <div *ngFor="let user of duplicates">
+      <ion-card>
+        <ion-item>
+          <ion-row>
+            <ion-col>
+              <p>First Name</p>
+            </ion-col>
+            <ion-col>
+              <p>Last Name</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <h2>{{user.fullname | splitFullname:'firstname'}}</h2>
+            </ion-col>
+            <ion-col>
+              <h4>{{user.fullname | splitFullname:'lastname'}} </h4>
+            </ion-col>
+          </ion-row>
+          <button ion-button clear item-end (click)="gotoDetail(user)">View</button>
+        </ion-item>
+        <ion-card-content>
+          <p>Gender: {{user.gender}}</p>
+          <ion-badge color="danger">Age: {{user.age}}</ion-badge>
+          <ion-badge color="danger">Age Group: {{user.agegroup}}</ion-badge>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Users Grouped by Driver Status
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list >
+     <ion-list-header color="secondary">
+         <b> Driver </b>
+        </ion-list-header>
+        <div *ngFor="let user of users">
+        <ion-card *ngIf="user.isdriver">
+            <ion-item>
+              <ion-row>
+                <ion-col><p>First Name</p></ion-col>
+                <ion-col><p>Last Name</p></ion-col> 
+              </ion-row>
+              <ion-row>
+                <ion-col><h2>{{user.fullname | splitFullname:'firstname'}}</h2></ion-col>
+                <ion-col><h4>{{user.fullname | splitFullname:'lastname'}} </h4></ion-col>
+              </ion-row>
+              <button ion-button clear item-end (click)="gotoDetail(user)">View</button>
+            </ion-item> 
+            <ion-card-content>
+              <p>Gender: {{user.gender}}</p>
+              <ion-badge color="secondary">Is a Driver: {{user.isdriver}}</ion-badge>
+            </ion-card-content>
+        </ion-card>
+        </div>
+        </ion-list>
+
+        <ion-list>
+            <ion-list-header color="dark">
+                 Not Driver
+               </ion-list-header>
+               <div *ngFor="let user of users">
+               <ion-card *ngIf="!user.isdriver">
+                   <ion-item>
+                     <ion-row>
+                       <ion-col><p>First Name</p></ion-col>
+                       <ion-col><p>Last Name</p></ion-col> 
+                     </ion-row>
+                     <ion-row>
+                       <ion-col><h2>{{user.fullname | splitFullname:'firstname'}}</h2></ion-col>
+                       <ion-col><h4>{{user.fullname | splitFullname:'lastname'}} </h4></ion-col>
+                     </ion-row>
+                     <button ion-button clear item-end (click)="gotoDetail(user)">View</button>
+                   </ion-item> 
+                   <ion-card-content>
+                     <p>Gender: {{user.gender}}</p>
+                     <ion-badge color="dark">Is a Driver: {{user.isdriver}}</ion-badge>
+                   </ion-card-content>
+               </ion-card>
+               </div>
+               </ion-list>
+               <ion-list>
+                <ion-list-header color="danger">
+                  Duplicates
+                </ion-list-header>
+                <div *ngFor="let user of duplicates">
+                  <ion-card>
+                    <ion-item>
+                      <ion-row>
+                        <ion-col>
+                          <p>First Name</p>
+                        </ion-col>
+                        <ion-col>
+                          <p>Last Name</p>
+                        </ion-col>
+                      </ion-row>
+                      <ion-row>
+                        <ion-col>
+                          <h2>{{user.fullname | splitFullname:'firstname'}}</h2>
+                        </ion-col>
+                        <ion-col>
+                          <h4>{{user.fullname | splitFullname:'lastname'}} </h4>
+                        </ion-col>
+                      </ion-row>
+                      <button ion-button clear item-end (click)="gotoDetail(user)">View</button>
+                    </ion-item>
+                    <ion-card-content>
+                      <p>Gender: {{user.gender}}</p>
+                      <ion-badge color="danger">Is Driver: {{user.isdriver}}</ion-badge>
+                     </ion-card-content>
+                  </ion-card>
+                </div>
+              </ion-list>
+</ion-content>

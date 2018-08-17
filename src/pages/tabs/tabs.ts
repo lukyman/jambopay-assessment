@@ -1,18 +1,19 @@
 import { Component } from '@angular/core';
 
-import { AboutPage } from '../about/about';
-import { ContactPage } from '../contact/contact';
-import { HomePage } from '../home/home';
+import { UsersByDriverStatusPage } from '../UsersByDriverStatus/UsersByDriverStatus';
+import { UsersByAgePage } from '../UsersByAge/UsersByAge';
+import { AllUsersPage } from '../AllUsers/AllUsers';
+import { UsersByEducationPage } from '../users-by-education/users-by-education';
 
 @Component({
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
 
-  tab1Root = HomePage;
-  tab2Root = AboutPage;
-  tab3Root = ContactPage;
-
+  tab1Root = AllUsersPage;
+  tab2Root = UsersByDriverStatusPage;
+  tab3Root = UsersByAgePage;
+  tab4Root = UsersByEducationPage;
   constructor() {
 
   }
